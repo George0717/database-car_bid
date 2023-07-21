@@ -1,12 +1,4 @@
 # car-bid
-Merupakan sebuah desain database sederhana untuk pelelangan mobil.
-
-
-blog : [Desain Database Lelang Mobil](https://blog.mrayhanfadil.my.id/desain-database-lelang-mobile/)
-
-youtube : [Relational Database Pacmann - Car Bid](https://youtu.be/ef-qpjmwB8I)
-
-
 ## ERD
 
 ![image](https://user-images.githubusercontent.com/55126764/232323710-5793c2f8-2b21-4a35-a9b3-28c4b1ac5192.png)
@@ -22,7 +14,7 @@ CREATE TABLE kota (
 );
 
 CREATE TABLE "user" (
-  user_id SERIAL PRIMARY KEY,
+  user_id INT IDENTITY(1,1) PRIMARY KEY,
   nama VARCHAR(225) NOT NULL,
   kontak VARCHAR(45) NOT NULL,
   kota_id INTEGER NOT NULL,
@@ -32,7 +24,7 @@ CREATE TABLE "user" (
 );
 
 CREATE TABLE "iklan" (
-  iklan_id SERIAL NOT NULL,
+  iklan_id INT IDENTITY NOT NULL,
   judul VARCHAR(225) NOT NULL,
   merk VARCHAR(45) NOT NULL,
   model VARCHAR(45) NOT NULL,
@@ -56,7 +48,7 @@ CREATE TABLE "iklan" (
 );
 
 CREATE TABLE "bid" (
-  bid_id SERIAL  NOT NULL,
+  bid_id INT IDENTITY  NOT NULL,
   status VARCHAR(45) NOT NULL,
   price INT NOT NULL,
   date DATE NOT NULL,
@@ -70,7 +62,7 @@ CREATE TABLE "bid" (
 );
 
 CREATE TABLE iklan_has_bid (
-  iklan_has_bid_id SERIAL NOT null,
+  iklan_has_bid_id INT IDENTITY NOT null,
   iklan_id INT NOT NULL,
   iklan_user_id INT NOT NULL,
   bid_id INT NOT NULL,
@@ -89,8 +81,7 @@ CREATE TABLE iklan_has_bid (
 );
 ```
 
-## Contoh pembuatan dummy data
-Berikut ini merupakan contoh pembuatan dummy data kota dan user. Contoh lain dapat dilihat langsung pada file [main.py](https://github.com/Fadil3/car-bid/blob/master/main.py).
+## Contoh Dummy data
 ```python
 import psycopg2
 from faker import Faker
